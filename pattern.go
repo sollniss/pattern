@@ -137,7 +137,7 @@ func (p repeat) Append(b []byte) []byte {
 	return b
 }
 
-// Potentially returns a Part that will include p with chance c.
+// Potentially returns a Part that will include p with probability c.
 //
 // Panics if c is < 0.
 func Potentially(c float64, p Part) Part {
@@ -192,7 +192,7 @@ func (p potentiallyP) Append(b []byte) []byte {
 
 type literal []byte
 
-// Literal returns a Part that will always output the given string.
+// Literal returns a Part that will always output s.
 func Literal(s string) Part {
 	return literal(s)
 }
@@ -279,7 +279,7 @@ func (p anyOfRune) Append(b []byte) []byte {
 	return append(b, string(p.alphabet[n])...)
 }
 
-// Shuffle returns a Part that randomly rearranges the sub-Parts in each iteration.
+// Shuffle returns a Part that randomly rearranges p in each iteration.
 // Uses the Fisher-Yates shuffle to generate permutations.
 //
 // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
